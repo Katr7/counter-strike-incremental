@@ -2,11 +2,42 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Counter-Strike Incremental</title>
     </head>
     <body>
+        <ul class="nav nav-tabs">
+	        <li role="presentation" class="active"><a href="index.html">Matchmaking</a></li>
+	        <li role="presentation"><a href="core.html">Shop</a></li>
+	        <li role="presentation"><a href="work.html">Work</a></li>
+	        <li role="presentation"><a href="info.html">Info</a></li>
+	   </ul>
+       <br>
+       <div class="flex-container">
+           <div class="panel panel-default" style="width:150px;">
+               <div class="panel-heading pushup">
+                   <h3 class="panel-title noselect">Stats</h3>
+               </div>
+               <div class="panel-body pushup">
+                   Wins: <span class="noselect" id="wins">0</span><br>
+                   Draws: <span class="noselect" id="draws">0</span><br>
+                   Losses: <span class="noselect" id="losses">0</span><br>
+                   Games Played: <span class="noselect" id="totalGames">0</span><br>
 
-
+               </div>
+           </div>
+           <div class="panel panel-default" style="width:170px;">
+               <div class="panel-heading pushup">
+                   <h3 class="panel-title noselect">Play Matchmaking</h3>
+               </div>
+               <div class="panel-body pushup">
+                   Rank: <span class="noselect" id="rank">Silver 1</span><br>
+                   <a class="btn" onclick="playMatchmaking()">Play</a>
+               </div>
+           </div>
+       </div>
+       <a class="btn" onclick="load()">Load</a>
+       <a class="btn" onclick="save()">Save</a>
+       <a class="btn" onclick="deleteSave()">Delete Save</a>
         <script src="js/core.js"></script>
         <script src="lib/jquery/js/jquery.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
