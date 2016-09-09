@@ -3,7 +3,7 @@ function playerSave(){
     this.draws = 0;
     this.losses = 0;
     this.totalGames = 0;
-    this.rank = "Silver s1";
+    this.rank = "Silver 1";
 }
 
 var Player = new playerSave();
