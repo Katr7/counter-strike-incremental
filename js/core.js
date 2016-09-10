@@ -20,6 +20,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+function drop(){
+
+}
+
 function playMatchmaking(){
     var int = getRandomInt(1, 19);
     if(int <= 13){
@@ -203,7 +207,6 @@ function deleteSave(){
     p.rank = "Silver 1";
     p.points = 0;
     p.pointsNeeded = 5;
-    p.maxDropChance = 100;
     p.dropChance = 5;
     s.dropChance = p.dropChance;
     s.pointsNeeeded = p.pointsNeeded;
@@ -223,6 +226,5 @@ function deleteSave(){
 }
 
 window.setInterval(function(){
-save();
 testRank();
 }, 100);
