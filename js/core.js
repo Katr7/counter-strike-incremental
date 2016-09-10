@@ -14,6 +14,7 @@ function playerSave(){
 
 var Player = new playerSave();
 var p = Player;
+var hasClicked = false;
 
 function updateHTML(elmId, value) {
     document.getElementById(elmId).innerHTML = value;
@@ -25,8 +26,11 @@ function getRandomInt(min, max) {
 
 function sleep(ms) {
     var unixtime_ms = new Date().getTime();
-    while(new Date().getTime() < unixtime_ms + ms) {}
+    while(new Date().getTime() < unixtime_ms + ms) {
+    }
 }
+
+
 
 function reduceDelay(){
     var reducePrice = Math.floor(10 * Math.pow(1.1,p.delayReduces));
