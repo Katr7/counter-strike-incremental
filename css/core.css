@@ -35,6 +35,17 @@ video#bgvid {
 	font-family: 'Raleway', sans-serif;
 }
 
+.flex-container-save {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    position: absolute;
+    bottom: 0;
+    margin-left: 50%;
+    margin-right: 50%;
+	font-family: 'Raleway', sans-serif;
+}
+
 .panel-default {
 	margin-right: 10px;
 	padding: 0px;
