@@ -7,6 +7,9 @@ function playerSave(){
     this.points = 0;
     this.pointsNeeded = 5;
     this.dropChance = 5;
+    this.money = 0;
+    this.delay = 2000;
+    this.delayReduces = 0;
 }
 
 var Player = new playerSave();
@@ -20,27 +23,73 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+function sleep(ms) {
+    var unixtime_ms = new Date().getTime();
+    while(new Date().getTime() < unixtime_ms + ms) {}
+}
+
+function reduceDelay(){
+    var reducePrice = Math.floor(10 * Math.pow(1.1,p.delayReduces));
+    if(p.money >= reducePrice && p.delayReduces < 10){
+        p.money = p.money - reducePrice;
+        p.delayReduces = p.delayReduces + 1;
+        p.delay = p.delay - 100;
+        updateHTML("delay", p.delay);
+        updateHTML("money", p.money);
+        updateHTML("delayReduces", p.delayReduces);
+    }
+}
+
+function drop(){
+    var getDrop = getRandomInt(1, 10);
+    if(getDrop <= 2){
+        var whichDrop = getRandomInt(1, 20);
+        if(whichDrop <= 10){
+            p.money = p.money + 0.1;
+            updateHTML("money", Math.round(p.money * 10) / 10);
+        }
+            else if(whichDrop > 10 && p.money <= 15){
+                p.money = p.money + 0.5;
+                updateHTML("money", Math.round(p.money * 10) / 10);
+            }
+            else if(whichDrop > 15 && p.money <= 19){
+                p.money = p.money + 1;
+                updateHTML("money", Math.round(p.money * 10) / 10);
+            }
+            else if(whichDrop === 20){
+                p.money = p.money + 5;
+                updateHTML("money", Math.round(p.money * 10) / 10);
+            }
+    }
+}
+
 function playMatchmaking(){
     var int = getRandomInt(1, 19);
     if(int <= 13){
+        sleep(p.delay);
         p.wins++;
         p.totalGames++;
         p.points++;
+        drop();
         updateHTML("points", p.points);
         updateHTML("totalGames", p.totalGames);
         updateHTML("wins", p.wins);
     }
     else if(int >= 15){
+        sleep(p.delay);
         p.losses++;
         p.totalGames++;
         p.points--;
+        drop();
         updateHTML("points", p.points);
         updateHTML("totalGames", p.totalGames);
         updateHTML("losses", p.losses);
     }
     else if(int === 14){
+        sleep(p.delay);
         p.draws++;
         p.totalGames++;
+        drop();
         updateHTML("totalGames", p.totalGames);
         updateHTML("draws", p.draws);
     }
@@ -166,6 +215,12 @@ function load(){
   p.totalGames = s.totalGames;
   p.rank = s.rank;
   p.dropChance = s.dropChance;
+  p.money = s.money;
+  p.delay = s.delay;
+  p.delayReduces = s.delayReduces;
+  updateHTML("delay", p.delay);
+  updateHTML("delayReduces", p.delayReduces);
+  updateHTML("money", p.money);
   updateHTML("points", p.points);
   updateHTML("wins", p.wins);
   updateHTML("draws", p.draws);
@@ -176,23 +231,29 @@ function load(){
 }
 
 window.onload = function(){
-  window.s = JSON.parse(window.localStorage['Player']);
-  p.pointsNeeded = s.pointsNeeded;
-  p.wins = s.wins;
-  p.points = s.points;
-  p.draws = s.draws;
-  p.losses = s.losses;
-  p.totalGames = s.totalGames;
-  p.rank = s.rank;
-  p.dropChance = s.dropChance;
-  updateHTML("points", p.points);
-  updateHTML("wins", p.wins);
-  updateHTML("draws", p.draws);
-  updateHTML("losses", p.losses);
-  updateHTML("totalGames", p.totalGames);
-  updateHTML("rank", p.rank);
-  updateHTML("pointsNeeded", p.pointsNeeded);
-}
+    window.s = JSON.parse(window.localStorage['Player']);
+    p.pointsNeeded = s.pointsNeeded;
+    p.wins = s.wins;
+    p.points = s.points;
+    p.draws = s.draws;
+    p.losses = s.losses;
+    p.totalGames = s.totalGames;
+    p.rank = s.rank;
+    p.dropChance = s.dropChance;
+    p.money = s.money;
+    p.delay = s.delay;
+    p.delayReduces = s.delayReduces;
+    updateHTML("delayReduces", p.delayReduces);
+    updateHTML("delay", p.delay);
+    updateHTML("money", p.money);
+    updateHTML("points", p.points);
+    updateHTML("wins", p.wins);
+    updateHTML("draws", p.draws);
+    updateHTML("losses", p.losses);
+    updateHTML("totalGames", p.totalGames);
+    updateHTML("rank", p.rank);
+    updateHTML("pointsNeeded", p.pointsNeeded);
+  }
 
 function deleteSave(){
     window.s = JSON.parse(window.localStorage['Player']);
@@ -203,8 +264,13 @@ function deleteSave(){
     p.rank = "Silver 1";
     p.points = 0;
     p.pointsNeeded = 5;
-    p.maxDropChance = 100;
     p.dropChance = 5;
+    p.money = 0;
+    p.delay = 2000;
+    p.delayReduces = 0;
+    s.delayReduces = p.delayReduces;
+    s.delay = p.delay;
+    s.money = p.money;
     s.dropChance = p.dropChance;
     s.pointsNeeeded = p.pointsNeeded;
     s.points = p.points;
@@ -213,6 +279,9 @@ function deleteSave(){
     s.losses = p.losses;
     s.totalGames = p.totalGames;
     s.rank = p.rank;
+    updateHTML("delay", p.delay);
+    updateHTML("delayReduces", p.delayReduces);
+    updateHTML("money", p.money);
     updateHTML("points", p.points);
     updateHTML("wins", p.wins);
     updateHTML("draws", p.draws);
@@ -223,6 +292,5 @@ function deleteSave(){
 }
 
 window.setInterval(function(){
-save();
 testRank();
 }, 100);
