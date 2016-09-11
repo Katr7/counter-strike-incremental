@@ -64,19 +64,19 @@ function drop(){
         var whichDrop = getRandomInt(1, 20);
         if(whichDrop <= 10){
             p.money = p.money + 0.1;
-            updateHTML("money", Math.round(p.money * 10) / 10);
+            updateHTML("money", p.money);
         }
             else if(whichDrop > 10 && p.money <= 15){
                 p.money = p.money + 0.5;
-                updateHTML("money", Math.round(p.money * 10) / 10);
+                updateHTML("money", p.money);
             }
             else if(whichDrop > 15 && p.money <= 19){
                 p.money = p.money + 1;
-                updateHTML("money", Math.round(p.money * 10) / 10);
+                updateHTML("money", p.money);
             }
             else if(whichDrop === 20){
                 p.money = p.money + 5;
-                updateHTML("money", Math.round(p.money * 10) / 10);
+                updateHTML("money", p.money);
             }
     }
 }
@@ -84,7 +84,6 @@ function drop(){
 function playMatchmaking(){
     var int = getRandomInt(1, 19);
     if(int <= 13){
-        sleep(p.delay);
         p.wins++;
         p.totalGames++;
         p.points++;
@@ -94,7 +93,6 @@ function playMatchmaking(){
         updateHTML("wins", p.wins);
     }
     else if(int >= 15){
-        sleep(p.delay);
         p.losses++;
         p.totalGames++;
         p.points--;
@@ -104,7 +102,6 @@ function playMatchmaking(){
         updateHTML("losses", p.losses);
     }
     else if(int === 14){
-        sleep(p.delay);
         p.draws++;
         p.totalGames++;
         drop();
@@ -116,7 +113,6 @@ function playMatchmaking(){
 function playCevo(){
     var cevoInt = getRandomInt(1, 19);
     if(cevoInt <= 13){
-        sleep(p.delay);
         p.cevoWins++;
         p.cevoTotalGames++;
         drop();
@@ -124,7 +120,6 @@ function playCevo(){
         updateHTML("cevoWins", p.cevoWins);
     }
     else if(cevoInt >= 15){
-        sleep(p.delay);
         p.cevoLosses++;
         p.cevoTotalGames++
         drop();
@@ -132,7 +127,6 @@ function playCevo(){
         updateHTML("cevoLosses", p.cevoLosses);
     }
     else if(cevoInt === 14){
-        sleep(p.delay);
         p.cevoDraws++;
         p.cevoTotalGames++;
         drop();
@@ -144,7 +138,6 @@ function playCevo(){
 function playEsea(){
     var cevoInt = getRandomInt(1, 19);
     if(cevoInt <= 13){
-        sleep(p.delay);
         p.eseaWins++;
         p.eseaTotalGames++;
         drop();
@@ -152,7 +145,6 @@ function playEsea(){
         updateHTML("eseaWins", p.eseaWins);
     }
     else if(cevoInt >= 15){
-        sleep(p.delay);
         p.eseaLosses++;
         p.eseaTotalGames++
         drop();
@@ -160,7 +152,6 @@ function playEsea(){
         updateHTML("eseaLosses", p.eseaLosses);
     }
     else if(cevoInt === 14){
-        sleep(p.delay);
         p.eseaDraws++;
         p.eseaTotalGames++;
         drop();
@@ -172,7 +163,6 @@ function playEsea(){
 function playFaceIt(){
     var cevoInt = getRandomInt(1, 19);
     if(cevoInt <= 13){
-        sleep(p.delay);
         p.faceItWins++;
         p.faceItTotalGames++;
         drop();
@@ -180,7 +170,6 @@ function playFaceIt(){
         updateHTML("faceItWins", p.faceItWins);
     }
     else if(cevoInt >= 15){
-        sleep(p.delay);
         p.faceItLosses++;
         p.faceItTotalGames++;
         drop();
@@ -188,7 +177,6 @@ function playFaceIt(){
         updateHTML("faceItLosses", p.faceItLosses);
     }
     else if(cevoInt === 14){
-        sleep(p.delay);
         p.faceItDraws++;
         p.faceItTotalGames++;
         drop();
@@ -474,6 +462,10 @@ function deleteSave(){
     updateHTML("totalGames", p.totalGames);
     updateHTML("rank", p.rank);
     updateHTML("pointsNeeded", p.pointsNeeded);
+}
+
+function round(number){
+  Math.round( number * 10 ) / 10;
 }
 
 window.setInterval(function(){
