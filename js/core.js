@@ -5,7 +5,7 @@ function playerSave(){
     this.totalGames = 0;
     this.faceItWins = 0;
     this.faceItDraws = 0;
-    this.faceItlosses = 0;
+    this.faceItLosses = 0;
     this.faceItTotalGames = 0;
     this.cevoWins = 0;
     this.cevoDraws = 0;
