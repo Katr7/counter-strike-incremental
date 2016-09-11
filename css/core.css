@@ -41,8 +41,7 @@ video#bgvid {
     flex-flow: row;
     position: absolute;
     bottom: 0;
-    margin-left: 50%;
-    margin-right: 50%;
+    margin-left: 45%;
 	font-family: 'Raleway', sans-serif;
 }
 

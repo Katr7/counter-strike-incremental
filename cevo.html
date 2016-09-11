@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Counter-Strike Incremental</title>
+    </head>
+    <body onload="load()">
+        <!--
+        CEVO Price = Free / $5 per month
+        More Improvement
+        -->
+        <div class="flex-container">
+        <ul class="nav nav-tabs">
+	        <li role="presentation"><a href="index.html">Matchmaking</a></li>
+	        <li role="presentation"><a href="faceit.html">FaceIt</a></li>
+	        <li role="presentation"><a href="esea.html">ESEA</a></li>
+	        <li role="presentation" class="active"><a href="cevo.html">CEVO</a></li>
+	   </ul>
+        </div>
+        <br>
+        <div class="flex-container">
+            <div class="panel panel-default" style="width:250px;">
+                <div class="panel-heading pushup">
+                    <h3 class="panel-title noselect">CEVO Scrim</h3>
+                </div>
+                <div class="panel-body pushup">
+                  Wins: <span class="noselect" id="cevoWins">0</span><br>
+                  Draws: <span class="noselect" id="cevoDraws">0</span><br>
+                  Losses: <span class="noselect" id="cevoLosses">0</span><br>
+                  Games Played: <span class="noselect" id="cevoTotalGames">0</span><br>
+                </div>
+            </div>
+            <div class="panel panel-default" style="width:250px;">
+                <div class="panel-heading pushup">
+                    <h3 class="panel-title noselect">Play Scrim</h3>
+                </div>
+                <div class="panel-body pushup">
+                    <a class="btn" onclick="playCevo()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play Scim</a>
+                </div>
+            </div>
+          </div>
+          <div class="flex-container-save">
+          <a class="btn" onclick="load()">Load</a>
+          <a class="btn" onclick="save()">Save</a>
+          <a class="btn" onclick="deleteSave()">Delete Save</a>
+           </div>
+        <script src="js/core.js"></script>
+        <script src="lib/jquery/js/jquery.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/core.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Chettan">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    </body>
+</html>

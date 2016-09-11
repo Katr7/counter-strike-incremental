@@ -3,6 +3,18 @@ function playerSave(){
     this.draws = 0;
     this.losses = 0;
     this.totalGames = 0;
+    this.faceItWins = 0;
+    this.faceItDraws = 0;
+    this.faceItlosses = 0;
+    this.faceItTotalGames = 0;
+    this.cevoWins = 0;
+    this.cevoDraws = 0;
+    this.cevoLosses = 0;
+    this.cevoTotalGames = 0;
+    this.eseaWins = 0;
+    this.eseaDraws = 0;
+    this.eseaLosses = 0;
+    this.eseaTotalGames = 0;
     this.rank = "Silver 1";
     this.points = 0;
     this.pointsNeeded = 5;
@@ -14,10 +26,12 @@ function playerSave(){
 
 var Player = new playerSave();
 var p = Player;
-var hasClicked = false;
 
 function updateHTML(elmId, value) {
+  var elem = document.getElementById(elmId);
+  if(typeof elem !== 'undefined' && elem !== null) {
     document.getElementById(elmId).innerHTML = value;
+  }
 }
 
 function getRandomInt(min, max) {
@@ -99,6 +113,89 @@ function playMatchmaking(){
     }
 }
 
+function playCevo(){
+    var cevoInt = getRandomInt(1, 19);
+    if(cevoInt <= 13){
+        sleep(p.delay);
+        p.cevoWins++;
+        p.cevoTotalGames++;
+        drop();
+        updateHTML("cevoTotalGames", p.cevoTotalGames);
+        updateHTML("cevoWins", p.cevoWins);
+    }
+    else if(cevoInt >= 15){
+        sleep(p.delay);
+        p.cevoLosses++;
+        p.cevoTotalGames++
+        drop();
+        updateHTML("cevoTotalGames", p.cevoTotalGames);
+        updateHTML("cevoLosses", p.cevoLosses);
+    }
+    else if(cevoInt === 14){
+        sleep(p.delay);
+        p.cevoDraws++;
+        p.cevoTotalGames++;
+        drop();
+        updateHTML("cevoTotalGames", p.cevoTotalGames);
+        updateHTML("cevoDraws", p.cevoDraws);
+    }
+}
+
+function playEsea(){
+    var cevoInt = getRandomInt(1, 19);
+    if(cevoInt <= 13){
+        sleep(p.delay);
+        p.eseaWins++;
+        p.eseaTotalGames++;
+        drop();
+        updateHTML("eseaTotalGames", p.eseaTotalGames);
+        updateHTML("eseaWins", p.eseaWins);
+    }
+    else if(cevoInt >= 15){
+        sleep(p.delay);
+        p.eseaLosses++;
+        p.eseaTotalGames++
+        drop();
+        updateHTML("eseaTotalGames", p.eseaTotalGames);
+        updateHTML("eseaLosses", p.eseaLosses);
+    }
+    else if(cevoInt === 14){
+        sleep(p.delay);
+        p.eseaDraws++;
+        p.eseaTotalGames++;
+        drop();
+        updateHTML("eseaTotalGames", p.eseaTotalGames);
+        updateHTML("eseaDraws", p.eseaDraws);
+    }
+}
+
+function playFaceIt(){
+    var cevoInt = getRandomInt(1, 19);
+    if(cevoInt <= 13){
+        sleep(p.delay);
+        p.faceItWins++;
+        p.faceItTotalGames++;
+        drop();
+        updateHTML("faceItTotalGames", p.faceItTotalGames);
+        updateHTML("faceItWins", p.faceItWins);
+    }
+    else if(cevoInt >= 15){
+        sleep(p.delay);
+        p.faceItLosses++;
+        p.faceItTotalGames++;
+        drop();
+        updateHTML("faceItTotalGames", p.faceItTotalGames);
+        updateHTML("faceItLosses", p.faceItLosses);
+    }
+    else if(cevoInt === 14){
+        sleep(p.delay);
+        p.faceItDraws++;
+        p.faceItTotalGames++;
+        drop();
+        updateHTML("faceItTotalGames", p.faceItTotalGames);
+        updateHTML("faceItDraws", p.faceItDraws);
+    }
+}
 function testRank(){
   if(p.points === 5 || p.points === 6 || p.points === 7 || p.points === 8 || p.points === 9){
     p.rank = "Silver 2";
@@ -210,29 +307,53 @@ function save(){
 }
 
 function load(){
-  window.s = JSON.parse(window.localStorage['Player']);
-  p.pointsNeeded = s.pointsNeeded;
-  p.wins = s.wins;
-  p.points = s.points;
-  p.draws = s.draws;
-  p.losses = s.losses;
-  p.totalGames = s.totalGames;
-  p.rank = s.rank;
-  p.dropChance = s.dropChance;
-  p.money = s.money;
-  p.delay = s.delay;
-  p.delayReduces = s.delayReduces;
-  updateHTML("delay", p.delay);
-  updateHTML("delayReduces", p.delayReduces);
-  updateHTML("money", p.money);
-  updateHTML("points", p.points);
-  updateHTML("wins", p.wins);
-  updateHTML("draws", p.draws);
-  updateHTML("losses", p.losses);
-  updateHTML("totalGames", p.totalGames);
-  updateHTML("rank", p.rank);
-  updateHTML("pointsNeeded", p.pointsNeeded);
-}
+    window.s = JSON.parse(window.localStorage['Player']);
+    p.pointsNeeded = s.pointsNeeded;
+    p.wins = s.wins;
+    p.points = s.points;
+    p.draws = s.draws;
+    p.losses = s.losses;
+    p.totalGames = s.totalGames;
+    p.rank = s.rank;
+    p.dropChance = s.dropChance;
+    p.money = s.money;
+    p.delay = s.delay;
+    p.delayReduces = s.delayReduces;
+    p.faceItWins = s.faceItWins;
+    p.faceItDraws = s.faceItDraws;
+    p.faceItLosses = s.faceItLosses;
+    p.faceItTotalGames = s.faceItTotalGames;
+    p.cevoWins = s.cevoWins;
+    p.cevoDraws = s.cevoDraws;
+    p.cevoLosses = s.cevoLosses;
+    p.cevoTotalGames = s.cevoTotalGames;
+    p.eseaWins = s.eseaWins;
+    p.eseaDraws = s.eseaDraws;
+    p.eseaLosses = s.eseaLosses;
+    p.eseaTotalGames = s.eseaTotalGames;
+    updateHTML("delayReduces", p.delayReduces);
+    updateHTML("delay", p.delay);
+    updateHTML("money", p.money);
+    updateHTML("points", p.points);
+    updateHTML("wins", p.wins);
+    updateHTML("draws", p.draws);
+    updateHTML("losses", p.losses);
+    updateHTML("totalGames", p.totalGames);
+    updateHTML("rank", p.rank);
+    updateHTML("pointsNeeded", p.pointsNeeded);
+    updateHTML("faceItTotalGames", p.faceItTotalGames);
+    updateHTML("faceItWins", p.faceItWins);
+    updateHTML("faceItDraws", p.faceItDraws);
+    updateHTML("faceItLosses", p.faceItLosses);
+    updateHTML("cevoWins", p.cevoWins);
+    updateHTML("cevoDraws", p.cevoDraws);
+    updateHTML("cevoLosses", p.cevoLosses);
+    updateHTML("cevoTotalGames", p.cevoTotalGames);
+    updateHTML("eseaWins", p.eseaWins);
+    updateHTML("eseaDraws", p.eseaDraws);
+    updateHTML("eseaLosses", p.eseaLosses);
+    updateHTML("eseaTotalGames", p.eseaTotalGames);
+  }
 
 window.onload = function(){
     window.s = JSON.parse(window.localStorage['Player']);
@@ -247,6 +368,18 @@ window.onload = function(){
     p.money = s.money;
     p.delay = s.delay;
     p.delayReduces = s.delayReduces;
+    p.faceItWins = s.faceItWins;
+    p.faceItDraws = s.faceItDraws;
+    p.faceItLosses = s.faceItLosses;
+    p.faceItTotalGames = s.faceItTotalGames;
+    p.cevoWins = s.cevoWins;
+    p.cevoDraws = s.cevoDraws;
+    p.cevoLosses = s.cevoLosses;
+    p.cevoTotalGames = s.cevoTotalGames;
+    p.eseaWins = s.eseaWins;
+    p.eseaDraws = s.eseaDraws;
+    p.eseaLosses = s.eseaLosses;
+    p.eseaTotalGames = s.eseaTotalGames;
     updateHTML("delayReduces", p.delayReduces);
     updateHTML("delay", p.delay);
     updateHTML("money", p.money);
@@ -257,6 +390,18 @@ window.onload = function(){
     updateHTML("totalGames", p.totalGames);
     updateHTML("rank", p.rank);
     updateHTML("pointsNeeded", p.pointsNeeded);
+    updateHTML("faceItWins", p.faceItWins);
+    updateHTML("faceItDraws", p.faceItDraws);
+    updateHTML("faceItLosses", p.faceItLosses);
+    updateHTML("faceItTotalGames", p.faceItTotalGames);
+    updateHTML("cevoWins", p.cevoWins);
+    updateHTML("cevoDraws", p.cevoDraws);
+    updateHTML("cevoLosses", p.cevoLosses);
+    updateHTML("cevoTotalGames", p.cevoTotalGames);
+    updateHTML("eseaWins", p.eseaWins);
+    updateHTML("eseaDraws", p.eseaDraws);
+    updateHTML("eseaLosses", p.eseaLosses);
+    updateHTML("eseaTotalGames", p.eseaTotalGames);
   }
 
 function deleteSave(){
@@ -272,6 +417,18 @@ function deleteSave(){
     p.money = 0;
     p.delay = 2000;
     p.delayReduces = 0;
+    p.faceItWins = 0;
+    p.faceItDraws = 0;
+    p.faceItLosses = 0;
+    p.faceItTotalGames = 0;
+    p.cevoWins = 0;
+    p.cevoDraws = 0;
+    p.cevoLosses = 0;
+    p.cevoTotalGames = 0;
+    p.eseaWins = 0;
+    p.eseaDraws = 0;
+    p.eseaLosses = 0;
+    p.eseaTotalGames = 0;
     s.delayReduces = p.delayReduces;
     s.delay = p.delay;
     s.money = p.money;
@@ -283,6 +440,30 @@ function deleteSave(){
     s.losses = p.losses;
     s.totalGames = p.totalGames;
     s.rank = p.rank;
+    s.faceItWins = p.faceItWins;
+    s.faceItDraws = p.faceItDraws;
+    s.faceItLosses = p.faceItLosses;
+    s.faceItTotalGames = p.faceItTotalGames;
+    s.cevoWins = p.cevoWins;
+    s.cevoDraws = p.cevoDraws;
+    s.cevoLosses = p.cevoLosses;
+    s.cevoTotalGames = p.cevoTotalGames;
+    s.eseaWins = p.eseaWins;
+    s.eseaDraws = p.eseaDraws;
+    s.eseaLosses = p.eseaLosses;
+    s.eseaTotalGames = p.eseaTotalGames;
+    updateHTML("faceItWins", p.faceItWins);
+    updateHTML("faceItDraws", p.faceItDraws);
+    updateHTML("faceItLosses", p.faceItLosses);
+    updateHTML("faceItTotalGames", p.faceItTotalGames);
+    updateHTML("cevoWins", p.cevoWins);
+    updateHTML("cevoDraws", p.cevoDraws);
+    updateHTML("cevoLosses", p.cevoLosses);
+    updateHTML("cevoTotalGames", p.cevoTotalGames);
+    updateHTML("eseaWins", p.eseaWins);
+    updateHTML("eseaDraws", p.eseaDraws);
+    updateHTML("eseaLosses", p.eseaLosses);
+    updateHTML("eseaTotalGames", p.eseaTotalGames);
     updateHTML("delay", p.delay);
     updateHTML("delayReduces", p.delayReduces);
     updateHTML("money", p.money);
@@ -298,3 +479,11 @@ function deleteSave(){
 window.setInterval(function(){
 testRank();
 }, 100);
+
+window.setInterval(function(){
+save();
+}, 1000);
+
+window.setInterval(function(){
+load();
+}, 2000);
