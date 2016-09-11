@@ -20,8 +20,11 @@ function playerSave(){
     this.pointsNeeded = 5;
     this.dropChance = 5;
     this.money = 0;
-    this.delay = 2000;
-    this.delayReduces = 0;
+    this.role = "No Role";
+    this.hasRole = false;
+    this.winLose = 0;
+    this.inGameName = "null";
+    this.hasName = false;
 }
 
 var Player = new playerSave();
@@ -44,18 +47,54 @@ function sleep(ms) {
     }
 }
 
-
-
-function reduceDelay(){
-    var reducePrice = Math.floor(10 * Math.pow(1.1,p.delayReduces));
-    if(p.money >= reducePrice && p.delayReduces < 10){
-        p.money = p.money - reducePrice;
-        p.delayReduces = p.delayReduces + 1;
-        p.delay = p.delay - 100;
-        updateHTML("delay", p.delay);
-        updateHTML("money", p.money);
-        updateHTML("delayReduces", p.delayReduces);
+function askName(){
+    if(p.hasName === false) {
+        name = prompt('What is you username? (Case Sensitive)');
+        p.inGameName = name;
+        updateHTML("inGameName", p.inGameName);
+        p.hasName = true;
     }
+}
+
+function askRole(){
+  if(p.hasRole === false){
+    askRole = prompt('What role do you want to play? (IGL, Lurker, Support, Entry Fragger or Awper)').toLowerCase();
+    if(askRole === 'igl') {
+      p.role = "IGL";
+      p.hasRole = true;
+      updateHTML("role", p.role);
+    }
+    else if(askRole === 'lurker'){
+      p.role = "Lurker";
+      p.hasRole = true;
+      updateHTML("role", p.role);
+    }
+    else if(askRole === 'support'){
+      p.role = "Support";
+      p.hasRole = true;
+      updateHTML("role", p.role);
+    }
+    else if(askRole === 'entry fragger'){
+      p.role = "Entry Fragger";
+      p.hasRole = true;
+      updateHTML("role", p.role);
+    }
+    else if(askRole === 'awper'){
+      p.role = "Awper";
+      p.hasRole = true;
+      updateHTML("role", p.role);
+        }
+    }
+}
+
+function changeRole(){
+    p.hasRole = false;
+    askRole();
+    location.reload();
+}
+
+function fixMoney(){
+    p.money = Math.round(p.money * 10) / 10;
 }
 
 function drop(){
@@ -64,19 +103,19 @@ function drop(){
         var whichDrop = getRandomInt(1, 20);
         if(whichDrop <= 10){
             p.money = p.money + 0.1;
-            updateHTML("money", p.money);
+            updateHTML("money", Math.round(p.money * 100) / 100);
         }
             else if(whichDrop > 10 && p.money <= 15){
                 p.money = p.money + 0.5;
-                updateHTML("money", p.money);
+                updateHTML("money", Math.round(p.money * 100) / 100);
             }
             else if(whichDrop > 15 && p.money <= 19){
                 p.money = p.money + 1;
-                updateHTML("money", p.money);
+                updateHTML("money", Math.round(p.money * 100) / 100);
             }
             else if(whichDrop === 20){
                 p.money = p.money + 5;
-                updateHTML("money", p.money);
+                updateHTML("money", Math.round(p.money * 100) / 100);
             }
     }
 }
@@ -184,6 +223,7 @@ function playFaceIt(){
         updateHTML("faceItDraws", p.faceItDraws);
     }
 }
+
 function testRank(){
   if(p.points === 5 || p.points === 6 || p.points === 7 || p.points === 8 || p.points === 9){
     p.rank = "Silver 2";
@@ -289,6 +329,18 @@ function testRank(){
   }
 };
 
+function winLose(){
+    if(p.wins / p.losses != "null" && p.wins / p.losses != "undefined"){
+    p.winLose = (p.wins / p.losses);
+    p.winLose = Math.round(p.winLose * 100) / 100;
+    updateHTML("winLose", p.winLose);
+    }
+    else{
+        p.winLose = 0;
+        updateHTML("winLose", p.winLose);
+    }
+};
+
 function save(){
     window.localStorage['Player'] = JSON.stringify(Player);
     window.s = JSON.parse(window.localStorage['Player']);
@@ -296,6 +348,11 @@ function save(){
 
 function load(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.hasName = s.hasName;
+    p.inGameName = s.inGameName;
+    p.hasRole = s.hasRole;
+    p.winLose = s.winLose;
+    p.role = s.role;
     p.pointsNeeded = s.pointsNeeded;
     p.wins = s.wins;
     p.points = s.points;
@@ -305,8 +362,6 @@ function load(){
     p.rank = s.rank;
     p.dropChance = s.dropChance;
     p.money = s.money;
-    p.delay = s.delay;
-    p.delayReduces = s.delayReduces;
     p.faceItWins = s.faceItWins;
     p.faceItDraws = s.faceItDraws;
     p.faceItLosses = s.faceItLosses;
@@ -319,9 +374,9 @@ function load(){
     p.eseaDraws = s.eseaDraws;
     p.eseaLosses = s.eseaLosses;
     p.eseaTotalGames = s.eseaTotalGames;
-    updateHTML("delayReduces", p.delayReduces);
-    updateHTML("delay", p.delay);
-    updateHTML("money", p.money);
+    updateHTML("inGameName", p.inGameName);
+    updateHTML("role", p.role);
+    updateHTML("money", Math.round(p.money * 100) / 100);
     updateHTML("points", p.points);
     updateHTML("wins", p.wins);
     updateHTML("draws", p.draws);
@@ -345,6 +400,11 @@ function load(){
 
 window.onload = function(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.hasName = s.hasName;
+    p.inGameName = s.inGameName;
+    p.hasRole = s.hasRole;
+    p.winLose = s.winLose;
+    p.role = s.role;
     p.pointsNeeded = s.pointsNeeded;
     p.wins = s.wins;
     p.points = s.points;
@@ -354,8 +414,6 @@ window.onload = function(){
     p.rank = s.rank;
     p.dropChance = s.dropChance;
     p.money = s.money;
-    p.delay = s.delay;
-    p.delayReduces = s.delayReduces;
     p.faceItWins = s.faceItWins;
     p.faceItDraws = s.faceItDraws;
     p.faceItLosses = s.faceItLosses;
@@ -368,9 +426,9 @@ window.onload = function(){
     p.eseaDraws = s.eseaDraws;
     p.eseaLosses = s.eseaLosses;
     p.eseaTotalGames = s.eseaTotalGames;
-    updateHTML("delayReduces", p.delayReduces);
-    updateHTML("delay", p.delay);
-    updateHTML("money", p.money);
+    updateHTML("inGameName", p.inGameName);
+    updateHTML("role", p.role);
+    updateHTML("money", Math.round(p.money * 100) / 100);
     updateHTML("points", p.points);
     updateHTML("wins", p.wins);
     updateHTML("draws", p.draws);
@@ -378,10 +436,10 @@ window.onload = function(){
     updateHTML("totalGames", p.totalGames);
     updateHTML("rank", p.rank);
     updateHTML("pointsNeeded", p.pointsNeeded);
+    updateHTML("faceItTotalGames", p.faceItTotalGames);
     updateHTML("faceItWins", p.faceItWins);
     updateHTML("faceItDraws", p.faceItDraws);
     updateHTML("faceItLosses", p.faceItLosses);
-    updateHTML("faceItTotalGames", p.faceItTotalGames);
     updateHTML("cevoWins", p.cevoWins);
     updateHTML("cevoDraws", p.cevoDraws);
     updateHTML("cevoLosses", p.cevoLosses);
@@ -394,6 +452,11 @@ window.onload = function(){
 
 function deleteSave(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.hasName = false;
+    p.inGameName = "null";
+    p.hasRole = false;
+    p.winLose = 0;
+    p.role = "No Role";
     p.wins = 0;
     p.draws = 0;
     p.losses = 0;
@@ -403,8 +466,6 @@ function deleteSave(){
     p.pointsNeeded = 5;
     p.dropChance = 5;
     p.money = 0;
-    p.delay = 2000;
-    p.delayReduces = 0;
     p.faceItWins = 0;
     p.faceItDraws = 0;
     p.faceItLosses = 0;
@@ -417,12 +478,15 @@ function deleteSave(){
     p.eseaDraws = 0;
     p.eseaLosses = 0;
     p.eseaTotalGames = 0;
-    s.delayReduces = p.delayReduces;
-    s.delay = p.delay;
     s.money = p.money;
+    s.hasName = p.hasName;
+    s.winLose = p.winLose;
+    s.inGameName = p.inGameName;
     s.dropChance = p.dropChance;
     s.pointsNeeeded = p.pointsNeeded;
     s.points = p.points;
+    s.hasRole = p.hasRole;
+    s.role = p.role;
     s.wins = p.wins;
     s.draws = p.draws;
     s.losses = p.losses;
@@ -440,6 +504,9 @@ function deleteSave(){
     s.eseaDraws = p.eseaDraws;
     s.eseaLosses = p.eseaLosses;
     s.eseaTotalGames = p.eseaTotalGames;
+    updateHTML("inGameName", p.inGameName);
+    updateHTML("role", p.role);
+    updateHTML("winLose", p.winLose);
     updateHTML("faceItWins", p.faceItWins);
     updateHTML("faceItDraws", p.faceItDraws);
     updateHTML("faceItLosses", p.faceItLosses);
@@ -464,18 +531,15 @@ function deleteSave(){
     updateHTML("pointsNeeded", p.pointsNeeded);
 }
 
-function round(number){
-  Math.round( number * 10 ) / 10;
-}
-
 window.setInterval(function(){
 testRank();
+winLose();
 }, 100);
 
 window.setInterval(function(){
 save();
+askRole();
+fixMoney();
+askName();
+updateHTML("winLose", p.winLose);
 }, 1000);
-
-window.setInterval(function(){
-load();
-}, 2000);
