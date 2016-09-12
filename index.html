@@ -5,6 +5,7 @@
         <title>Counter-Strike Incremental</title>
     </head>
     <body>
+    <div class="tab-content">
         <div class="flex-container">
             <ul class="nav nav-pills">
                 <li class="active"><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
@@ -13,7 +14,7 @@
                 <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
             </ul>
         </div>
-    <div id="matchmaking" class="tab-pane fade in active">
+    <div id="matchmaking" class="tab-pane active">
 
        <br>
        <div class="flex-container">
@@ -61,15 +62,7 @@
            </div>
        </div>
    </div>
-   <div id="faceit" class="tab-pane fade">
-   <div class="flex-container">
-       <ul class="nav nav-pills">
-           <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
-           <li class="active"><a data-toggle="pill" href="#faceit">FaceIt</a></li>
-           <li><a data-toggle="pill" href="#esea">ESEA</a></li>
-           <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
-       </ul>
-   </div>
+   <div id="faceit" class="tab-pane">
    <br>
    <div class="flex-container">
        <div class="panel panel-default" style="width:250px;">
@@ -93,15 +86,7 @@
        </div>
      </div>
  </div>
-         <div id="esea" class="tab-pane fade">
-         <div class="flex-container">
-             <ul class="nav nav-pills">
-                 <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
-                 <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
-                 <li class="active"><a data-toggle="pill" href="#esea">ESEA</a></li>
-                 <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
-             </ul>
-         </div>
+         <div id="esea" class="tab-pane">
          <br>
          <div class="flex-container">
              <div class="panel panel-default" style="width:250px;">
@@ -126,15 +111,7 @@
            </div>
         </div>
 
-        <div id="cevo" class="tab-pane fade">
-        <div class="flex-container">
-            <ul class="nav nav-pills">
-                <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
-                <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
-                <li><a data-toggle="pill" href="#esea">ESEA</a></li>
-                <li class="active"><a data-toggle="pill" href="#cevo">CEVO</a></li>
-            </ul>
-        </div>
+        <div id="cevo" class="tab-pane">
         <br>
         <div class="flex-container">
             <div class="panel panel-default" style="width:250px;">
@@ -158,13 +135,12 @@
             </div>
           </div>
       </div>
-
+  </div>
        <div class="flex-container-save">
        <a class="btn" onclick="load()">Load</a>
        <a class="btn" onclick="save()">Save</a>
        <a class="btn" onclick="deleteSave()">Delete Save</a>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/core.js"></script>
         <script src="lib/jquery/js/jquery.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
