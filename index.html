@@ -6,12 +6,13 @@
     </head>
     <body>
     <div class="noselect">
+    <div class="matchmaking">
         <div class="flex-container">
         <ul class="nav nav-tabs">
-	        <li role="presentation" class="active"><a href="index.html">Matchmaking</a></li>
-	        <li role="presentation"><a href="faceit.html">FaceIt</a></li>
-	        <li role="presentation"><a href="esea.html">ESEA</a></li>
-	        <li role="presentation" id="cevo"><a href="cevo.html">CEVO</a></li>
+	        <li role="presentation" id="matchmaking" class="active"><a href="index.html">Matchmaking</a></li>
+	        <li role="presentation" id="faceit"><a>FaceIt</a></li>
+	        <li role="presentation" id="esea"><a>ESEA</a></li>
+	        <li role="presentation" id="cevo"><a>CEVO</a></li>
 	   </ul>
         </div>
        <br>
@@ -60,13 +61,110 @@
            </div>
        </div>
    </div>
-   Autosave is on 1 second, do not go to 'FaceIt', 'ESEA' or 'CEVO' too quick after playing a match. <br>
-   If this is the first time starting the game you might have to press 'Delete Save' on the bottom of the page.
+   <div class="faceit">
+   <div class="flex-container">
+       <ul class="nav nav-tabs">
+           <li role="presentation" id="matchmaking2"><a>Matchmaking</a></li>
+           <li role="presentation" id="faceit2" class="active"><a>FaceIt</a></li>
+           <li role="presentation" id="esea2"><a>ESEA</a></li>
+           <li role="presentation" id="cevo2"><a>CEVO</a></li>
+      </ul>
+   </div>
+   <br>
+   <div class="flex-container">
+       <div class="panel panel-default" style="width:250px;">
+           <div class="panel-heading pushup">
+               <h3 class="panel-title noselect">FaceIt</h3>
+           </div>
+           <div class="panel-body pushup">
+             Wins: <span class="noselect" id="faceItWins">0</span><br>
+             Draws: <span class="noselect" id="faceItDraws">0</span><br>
+             Losses: <span class="noselect" id="faceItLosses">0</span><br>
+             Games Played: <span class="noselect" id="faceItTotalGames">0</span><br>
+           </div>
+       </div>
+       <div class="panel panel-default" style="width:250px;">
+           <div class="panel-heading pushup">
+               <h3 class="panel-title noselect">Play FaceIt</h3>
+           </div>
+           <div class="panel-body pushup">
+               <a class="btn" onclick="playFaceIt()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play FaceIt</a>
+           </div>
+       </div>
+     </div>
+ </div>
+         <div class="esea">
+         <div class="flex-container">
+             <ul class="nav nav-tabs">
+                 <li role="presentation" id="matchmaking"><a>Matchmaking</a></li>
+                 <li role="presentation" id="faceit"><a>FaceIt</a></li>
+                 <li role="presentation" id="esea" class="active"><a>ESEA</a></li>
+                 <li role="presentation" id="cevo"><a>CEVO</a></li>
+            </ul>
+         </div>
+         <br>
+         <div class="flex-container">
+             <div class="panel panel-default" style="width:250px;">
+                 <div class="panel-heading pushup">
+                     <h3 class="panel-title noselect">ESEA</h3>
+                 </div>
+                 <div class="panel-body pushup">
+                   Wins: <span class="noselect" id="eseaWins">0</span><br>
+                   Draws: <span class="noselect" id="eseaDraws">0</span><br>
+                   Losses: <span class="noselect" id="eseaLosses">0</span><br>
+                   Games Played: <span class="noselect" id="eseaTotalGames">0</span><br>
+                 </div>
+             </div>
+             <div class="panel panel-default" style="width:250px;">
+                 <div class="panel-heading pushup">
+                     <h3 class="panel-title noselect">Play ESEA</h3>
+                 </div>
+                 <div class="panel-body pushup">
+                     <a class="btn" onclick="playEsea()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play ESEA</a>
+                 </div>
+             </div>
+           </div>
+        </div>
+
+        <div class="cevo">
+        <div class="flex-container">
+            <ul class="nav nav-tabs">
+                <li role="presentation" id="matchmaking"><a>Matchmaking</a></li>
+                <li role="presentation" id="faceit"><a>FaceIt</a></li>
+                <li role="presentation" id="esea"><a>ESEA</a></li>
+                <li role="presentation" id="cevo" class="active"><a>CEVO</a></li>
+           </ul>
+        </div>
+        <br>
+        <div class="flex-container">
+            <div class="panel panel-default" style="width:250px;">
+                <div class="panel-heading pushup">
+                    <h3 class="panel-title noselect">CEVO Scrim</h3>
+                </div>
+                <div class="panel-body pushup">
+                  Wins: <span class="noselect" id="cevoWins">0</span><br>
+                  Draws: <span class="noselect" id="cevoDraws">0</span><br>
+                  Losses: <span class="noselect" id="cevoLosses">0</span><br>
+                  Games Played: <span class="noselect" id="cevoTotalGames">0</span><br>
+                </div>
+            </div>
+            <div class="panel panel-default" style="width:250px;">
+                <div class="panel-heading pushup">
+                    <h3 class="panel-title noselect">Play Scrim</h3>
+                </div>
+                <div class="panel-body pushup">
+                    <a class="btn" onclick="playCevo()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play Scim</a>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
        <div class="flex-container-save">
        <a class="btn" onclick="load()">Load</a>
        <a class="btn" onclick="save()">Save</a>
        <a class="btn" onclick="deleteSave()">Delete Save</a>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/core.js"></script>
         <script src="lib/jquery/js/jquery.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -76,3 +174,11 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     </body>
 </html>
+
+
+<!--
+
+
+
+
+-->
