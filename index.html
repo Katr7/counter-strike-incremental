@@ -5,16 +5,16 @@
         <title>Counter-Strike Incremental</title>
     </head>
     <body>
-    <div class="noselect">
-    <div class="matchmaking">
         <div class="flex-container">
-        <ul class="nav nav-tabs">
-	        <li role="presentation" id="matchmaking" class="active"><a href="index.html">Matchmaking</a></li>
-	        <li role="presentation" id="faceit"><a>FaceIt</a></li>
-	        <li role="presentation" id="esea"><a>ESEA</a></li>
-	        <li role="presentation" id="cevo"><a>CEVO</a></li>
-	   </ul>
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
+                <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
+                <li><a data-toggle="pill" href="#esea">ESEA</a></li>
+                <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
+            </ul>
         </div>
+    <div id="matchmaking" class="tab-pane fade in active">
+
        <br>
        <div class="flex-container">
            <div class="panel panel-default" style="width:250px;">
@@ -61,14 +61,14 @@
            </div>
        </div>
    </div>
-   <div class="faceit">
+   <div id="faceit" class="tab-pane fade">
    <div class="flex-container">
-       <ul class="nav nav-tabs">
-           <li role="presentation" id="matchmaking2"><a>Matchmaking</a></li>
-           <li role="presentation" id="faceit2" class="active"><a>FaceIt</a></li>
-           <li role="presentation" id="esea2"><a>ESEA</a></li>
-           <li role="presentation" id="cevo2"><a>CEVO</a></li>
-      </ul>
+       <ul class="nav nav-pills">
+           <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
+           <li class="active"><a data-toggle="pill" href="#faceit">FaceIt</a></li>
+           <li><a data-toggle="pill" href="#esea">ESEA</a></li>
+           <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
+       </ul>
    </div>
    <br>
    <div class="flex-container">
@@ -93,14 +93,14 @@
        </div>
      </div>
  </div>
-         <div class="esea">
+         <div id="esea" class="tab-pane fade">
          <div class="flex-container">
-             <ul class="nav nav-tabs">
-                 <li role="presentation" id="matchmaking"><a>Matchmaking</a></li>
-                 <li role="presentation" id="faceit"><a>FaceIt</a></li>
-                 <li role="presentation" id="esea" class="active"><a>ESEA</a></li>
-                 <li role="presentation" id="cevo"><a>CEVO</a></li>
-            </ul>
+             <ul class="nav nav-pills">
+                 <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
+                 <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
+                 <li class="active"><a data-toggle="pill" href="#esea">ESEA</a></li>
+                 <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
+             </ul>
          </div>
          <br>
          <div class="flex-container">
@@ -126,14 +126,14 @@
            </div>
         </div>
 
-        <div class="cevo">
+        <div id="cevo" class="tab-pane fade">
         <div class="flex-container">
-            <ul class="nav nav-tabs">
-                <li role="presentation" id="matchmaking"><a>Matchmaking</a></li>
-                <li role="presentation" id="faceit"><a>FaceIt</a></li>
-                <li role="presentation" id="esea"><a>ESEA</a></li>
-                <li role="presentation" id="cevo" class="active"><a>CEVO</a></li>
-           </ul>
+            <ul class="nav nav-pills">
+                <li><a data-toggle="pill" href="#matchmaking">Matchmaking</a></li>
+                <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
+                <li><a data-toggle="pill" href="#esea">ESEA</a></li>
+                <li class="active"><a data-toggle="pill" href="#cevo">CEVO</a></li>
+            </ul>
         </div>
         <br>
         <div class="flex-container">
@@ -158,7 +158,7 @@
             </div>
           </div>
       </div>
-  </div>
+
        <div class="flex-container-save">
        <a class="btn" onclick="load()">Load</a>
        <a class="btn" onclick="save()">Save</a>
