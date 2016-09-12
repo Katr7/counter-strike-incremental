@@ -148,39 +148,6 @@ function playMatchmaking(){
         updateHTML("draws", p.draws);
     }
 }
-$(document).ready(function(){
-    $(".faceit").hide();
-    $(".esea").hide();
-    $(".cevo").hide();
-    $(".matchmaking").show();
-})
-
-$(document).ready(function(){
-    $("#faceit").click(function(){
-        $(".matchmaking").hide();
-        $(".cevo").hide();
-        $(".esea").hide();
-        $(".faceit").show();
-    });
-    $("#matchmaking").click(function(){
-        $(".faceit").hide();
-        $(".esea").hide();
-        $(".cevo").hide();
-        $(".matchmaking").show();
-    });
-    $("#esea").click(function(){
-        $(".matchmaking").hide();
-        $(".faceit").hide();
-        $(".cevo").hide();
-        $(".esea").show();
-    });
-    $("#cevo").click(function(){
-        $(".matchmaking").hide();
-        $(".faceit").hide();
-        $(".esea").hide();
-        $(".cevo").show();
-    });
-});
 
 function playCevo(){
     var cevoInt = getRandomInt(1, 19);
