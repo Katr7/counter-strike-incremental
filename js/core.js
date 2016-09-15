@@ -7,6 +7,7 @@ function playerSave(){
     this.faceItDraws = 0;
     this.faceItLosses = 0;
     this.faceItTotalGames = 0;
+    this.faceItPoints = 0;
     this.cevoWins = 0;
     this.cevoDraws = 0;
     this.cevoLosses = 0;
@@ -15,7 +16,10 @@ function playerSave(){
     this.eseaDraws = 0;
     this.eseaLosses = 0;
     this.eseaTotalGames = 0;
+    this.eseaPoints = 0;
     this.rank = "Silver 1";
+    this.faceItRank = "Bronze";
+    this.eseaRank = "D-"
     this.points = 0;
     this.pointsNeeded = 5;
     this.dropChance = 5;
@@ -179,9 +183,11 @@ function playEsea(){
     if(cevoInt <= 13){
         p.eseaWins++;
         p.eseaTotalGames++;
+        p.eseaPoints = p.eseaPoints + 10;
         drop();
         updateHTML("eseaTotalGames", p.eseaTotalGames);
         updateHTML("eseaWins", p.eseaWins);
+        updateHTML("eseaPoints", p.eseaPoints);
     }
     else if(cevoInt >= 15){
         p.eseaLosses++;
@@ -193,9 +199,11 @@ function playEsea(){
     else if(cevoInt === 14){
         p.eseaDraws++;
         p.eseaTotalGames++;
+        p.eseaPoints = p.eseaPoints - 10;
         drop();
         updateHTML("eseaTotalGames", p.eseaTotalGames);
         updateHTML("eseaDraws", p.eseaDraws);
+        updateHTML("eseaPoints", p.eseaPoints);
     }
 }
 
@@ -204,13 +212,17 @@ function playFaceIt(){
     if(cevoInt <= 13){
         p.faceItWins++;
         p.faceItTotalGames++;
+        p.faceItPoints = p.faceItPoints + 30;
         drop();
+        updateHTML("faceItPoints", p.faceItPoints);
         updateHTML("faceItTotalGames", p.faceItTotalGames);
         updateHTML("faceItWins", p.faceItWins);
     }
     else if(cevoInt >= 15){
         p.faceItLosses++;
         p.faceItTotalGames++;
+        p.faceItPoints = p.faceItPoints - 30;
+        updateHTML("faceItPoints", p.faceItPoints);
         drop();
         updateHTML("faceItTotalGames", p.faceItTotalGames);
         updateHTML("faceItLosses", p.faceItLosses);
@@ -221,6 +233,84 @@ function playFaceIt(){
         drop();
         updateHTML("faceItTotalGames", p.faceItTotalGames);
         updateHTML("faceItDraws", p.faceItDraws);
+    }
+}
+
+function testFaceItRank(){
+    if(p.faceItPoints < 1200){
+        p.faceItRank = "Bronze";
+        updateHTML("faceItRank", p.faceItRank);
+    }
+    else if(p.faceItPoints >= 1200 && p.faceItPoints < 1500){
+        p.faceItRank = "Silver";
+        updateHTML("faceItRank", p.faceItRank);
+    }
+    else if(p.faceItPoints >= 1500 && p.faceItPoints < 1750){
+        p.faceItRank = "Gold";
+        updateHTML("faceItRank", p.faceItRank);
+    }
+    else if(p.faceItPoints >= 1750 && p.faceItPoints < 1900){
+        p.faceItRank = "Diamond";
+        updateHTML("faceItRank", p.faceItRank);
+    }
+    else if(p.faceItPoints >= 1900 && p.faceItPoints < 2100){
+        p.faceItRank = "Master";
+        updateHTML("faceItRank", p.faceItRank);
+    }
+}
+
+function testEseaRank(){
+    if(p.eseaPoints < 100){
+        p.eseaRank = "D-";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 100 && p.eseaPoints < 200){
+        p.eseaRank = "D";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 200 && p.eseaPoints < 300){
+        p.eseaRank = "D+";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 300 && p.eseaPoints < 400){
+        p.eseaRank = "C-";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 400 && p.eseaPoints < 500){
+        p.eseaRank = "C";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 500 && p.eseaPoints < 600){
+        p.eseaRank = "C+";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 600 && p.eseaPoints < 700){
+        p.eseaRank = "B-";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 700 && p.eseaPoints < 800){
+        p.eseaRank = "B";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 800 && p.eseaPoints < 900){
+        p.eseaRank = "B+";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 900 && p.eseaPoints < 1000){
+        p.eseaRank = "A-";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 1000 && p.eseaPoints < 1100){
+        p.eseaRank = "A";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 1100 && p.eseaPoints < 1200){
+        p.eseaRank = "A+";
+        updateHTML("eseaRank", p.eseaRank);
+    }
+    else if(p.eseaPoints >= 1200 && p.eseaPoints < 1300){
+        p.eseaRank = "S";
+        updateHTML("eseaRank", p.eseaRank);
     }
 }
 
@@ -348,6 +438,10 @@ function save(){
 
 function load(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.eseaRank = s.eseaRank;
+    p.eseaPoints = s.eseaPoints;
+    p.faceItPoints = s.faceItPoints;
+    p.faceItRank = s.faceItRank;
     p.hasName = s.hasName;
     p.inGameName = s.inGameName;
     p.hasRole = s.hasRole;
@@ -374,6 +468,10 @@ function load(){
     p.eseaDraws = s.eseaDraws;
     p.eseaLosses = s.eseaLosses;
     p.eseaTotalGames = s.eseaTotalGames;
+    updateHTML("eseaPoints", p.eseaPoints);
+    updateHTML("eseaRank", p.eseaRank);
+    updateHTML("faceItPoints", p.faceItPoints);
+    updateHTML("faceItRank", p.faceItRank);
     updateHTML("inGameName", p.inGameName);
     updateHTML("role", p.role);
     updateHTML("money", Math.round(p.money * 100) / 100);
@@ -400,6 +498,10 @@ function load(){
 
 window.onload = function(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.eseaRank = s.eseaRank;
+    p.eseaPoints = s.eseaPoints;
+    p.faceItPoints = s.faceItPoints;
+    p.faceItRank = s.faceItRank;
     p.hasName = s.hasName;
     p.inGameName = s.inGameName;
     p.hasRole = s.hasRole;
@@ -426,6 +528,10 @@ window.onload = function(){
     p.eseaDraws = s.eseaDraws;
     p.eseaLosses = s.eseaLosses;
     p.eseaTotalGames = s.eseaTotalGames;
+    updateHTML("eseaPoints", p.eseaPoints);
+    updateHTML("eseaRank", p.eseaRank);
+    updateHTML("faceItPoints", p.faceItPoints);
+    updateHTML("faceItRank", p.faceItRank);
     updateHTML("inGameName", p.inGameName);
     updateHTML("role", p.role);
     updateHTML("money", Math.round(p.money * 100) / 100);
@@ -452,7 +558,11 @@ window.onload = function(){
 
 function deleteSave(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.eseaRank = "D-"
+    p.eseaPoints = 0;
     p.hasName = false;
+    p.faceItRank = "Bronze";
+    p.faceItPoints = 0;
     p.inGameName = "null";
     p.hasRole = false;
     p.winLose = 0;
@@ -478,7 +588,11 @@ function deleteSave(){
     p.eseaDraws = 0;
     p.eseaLosses = 0;
     p.eseaTotalGames = 0;
+    s.eseaRank = p.eseaRank;
+    s.eseaPoints = p.eseaPoints;
     s.money = p.money;
+    s.faceItPoints = p.faceItPoints;
+    s.faceItRank = p.faceItRank;
     s.hasName = p.hasName;
     s.winLose = p.winLose;
     s.inGameName = p.inGameName;
@@ -504,6 +618,10 @@ function deleteSave(){
     s.eseaDraws = p.eseaDraws;
     s.eseaLosses = p.eseaLosses;
     s.eseaTotalGames = p.eseaTotalGames;
+    updateHTML("eseaPoints", p.eseaPoints);
+    updateHTML("eseaRank", p.eseaRank);
+    updateHTML("faceItPoints", p.faceItPoints);
+    updateHTML("faceItRank", p.faceItRank);
     updateHTML("inGameName", p.inGameName);
     updateHTML("role", p.role);
     updateHTML("winLose", p.winLose);
@@ -533,15 +651,15 @@ function deleteSave(){
 
 window.setInterval(function(){
 testRank();
+testFaceItRank();
+testEseaRank();
 winLose();
 }, 100);
 
-
-
 window.setInterval(function(){
 save();
-askRole();
 fixMoney();
 askName();
+askRole();
 updateHTML("winLose", p.winLose);
 }, 1000);
