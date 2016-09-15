@@ -12,179 +12,205 @@
                 <li><a data-toggle="pill" href="#faceit">FaceIt</a></li>
                 <li><a data-toggle="pill" href="#esea">ESEA</a></li>
                 <li><a data-toggle="pill" href="#cevo">CEVO</a></li>
+                <li><a data-toggle="pill" href="#tournament">Tournament</a></li>
             </ul>
         </div>
-    <div id="matchmaking" class="tab-pane active">
+        <div id="matchmaking" class="tab-pane active">
+           <br>
+           <div class="flex-container">
+               <div class="panel panel-default" style="width:250px;">
+                   <div class="panel-heading pushup">
+                       <h3 class="panel-title noselect">Stats</h3>
+                   </div>
+                   <div class="panel-body pushup">
+                       Wins: <span class="noselect" id="wins">0</span><br>
+                       Draws: <span class="noselect" id="draws">0</span><br>
+                       Losses: <span class="noselect" id="losses">0</span><br>
+                       Games Played: <span class="noselect" id="totalGames">0</span><br>
+                       Win/Lose Ratio: <span class="noselect" id="winLose">0</span><br>
 
+                   </div>
+               </div>
+               <div class="panel panel-default" style="width:250px;">
+                   <div class="panel-heading pushup">
+                       <h3 class="panel-title noselect">Play Matchmaking</h3>
+                   </div>
+                   <div class="panel-body pushup">
+                       Rank: <span class="noselect" id="rank">Silver 1</span><br>
+                       Role: <span class="noselect" id="role">No Role</span><br>
+                       Username: <span class="noselect" id="inGameName">null</span><br>
+                       <a class="btn" onclick="playMatchmaking()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play</a>
+                       <a class="btn" onclick="changeRole()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Change Role</a>
+                   </div>
+               </div>
+               <div class="panel panel-default" style="width:250px;">
+                   <div class="panel-heading pushup">
+                       <h3 class="panel-title noselect">Rank Stats</h3>
+                   </div>
+                   <div class="panel-body pushup">
+                       Points: <span class="noselect" id="points">0</span><br>
+                       Points needed: <span class="noselect" id="pointsNeeded">0</span><br>
+                   </div>
+               </div>
+               <div class="panel panel-default" style="width:250px;">
+                   <div class="panel-heading pushup">
+                       <h3 class="panel-title noselect">Account Balance</h3>
+                   </div>
+                   <div class="panel-body pushup">
+                       Money: $<span class="noselect" id="money">0</span><br>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div id="faceit" class="tab-pane">
        <br>
        <div class="flex-container">
            <div class="panel panel-default" style="width:250px;">
                <div class="panel-heading pushup">
-                   <h3 class="panel-title noselect">Stats</h3>
+                   <h3 class="panel-title noselect">FaceIt</h3>
                </div>
                <div class="panel-body pushup">
-                   Wins: <span class="noselect" id="wins">0</span><br>
-                   Draws: <span class="noselect" id="draws">0</span><br>
-                   Losses: <span class="noselect" id="losses">0</span><br>
-                   Games Played: <span class="noselect" id="totalGames">0</span><br>
-                   Win/Lose Ratio: <span class="noselect" id="winLose">0</span><br>
-
+                 Wins: <span class="noselect" id="faceItWins">0</span><br>
+                 Draws: <span class="noselect" id="faceItDraws">0</span><br>
+                 Losses: <span class="noselect" id="faceItLosses">0</span><br>
+                 Games Played: <span class="noselect" id="faceItTotalGames">0</span><br>
                </div>
            </div>
            <div class="panel panel-default" style="width:250px;">
                <div class="panel-heading pushup">
-                   <h3 class="panel-title noselect">Play Matchmaking</h3>
+                   <h3 class="panel-title noselect">Play FaceIt</h3>
                </div>
                <div class="panel-body pushup">
-                   Rank: <span class="noselect" id="rank">Silver 1</span><br>
-                   Role: <span class="noselect" id="role">No Role</span><br>
-                   Username: <span class="noselect" id="inGameName">null</span><br>
-                   <a class="btn" onclick="playMatchmaking()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play</a>
-                   <a class="btn" onclick="changeRole()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Change Role</a>
+                   <a class="btn" onclick="playFaceIt()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play FaceIt</a>
                </div>
            </div>
            <div class="panel panel-default" style="width:250px;">
                <div class="panel-heading pushup">
-                   <h3 class="panel-title noselect">Rank Stats</h3>
+                   <h3 class="panel-title noselect">FaceIt Rank</h3>
                </div>
                <div class="panel-body pushup">
-                   Points: <span class="noselect" id="points">0</span><br>
-                   Points needed: <span class="noselect" id="pointsNeeded">0</span><br>
+                 Elo: <span class="noselect" id="faceItPoints">0</span><br>
+                 Rank: <span class="noselect" id="faceItRank">0</span><br>
                </div>
            </div>
-           <div class="panel panel-default" style="width:250px;">
-               <div class="panel-heading pushup">
-                   <h3 class="panel-title noselect">Account Balance</h3>
-               </div>
-               <div class="panel-body pushup">
-                   Money: $<span class="noselect" id="money">0</span><br>
-               </div>
-           </div>
-       </div>
-   </div>
-   <div id="faceit" class="tab-pane">
-   <br>
-   <div class="flex-container">
-       <div class="panel panel-default" style="width:250px;">
-           <div class="panel-heading pushup">
-               <h3 class="panel-title noselect">FaceIt</h3>
-           </div>
-           <div class="panel-body pushup">
-             Wins: <span class="noselect" id="faceItWins">0</span><br>
-             Draws: <span class="noselect" id="faceItDraws">0</span><br>
-             Losses: <span class="noselect" id="faceItLosses">0</span><br>
-             Games Played: <span class="noselect" id="faceItTotalGames">0</span><br>
-           </div>
-       </div>
-       <div class="panel panel-default" style="width:250px;">
-           <div class="panel-heading pushup">
-               <h3 class="panel-title noselect">Play FaceIt</h3>
-           </div>
-           <div class="panel-body pushup">
-               <a class="btn" onclick="playFaceIt()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play FaceIt</a>
-           </div>
-       </div>
-       <div class="panel panel-default" style="width:250px;">
-           <div class="panel-heading pushup">
-               <h3 class="panel-title noselect">FaceIt Rank</h3>
-           </div>
-           <div class="panel-body pushup">
-             Elo: <span class="noselect" id="faceItPoints">0</span><br>
-             Rank: <span class="noselect" id="faceItRank">0</span><br>
-           </div>
-       </div>
+         </div>
      </div>
- </div>
-         <div id="esea" class="tab-pane">
-         <br>
-         <div class="flex-container">
-             <div class="panel panel-default" style="width:250px;">
-                 <div class="panel-heading pushup">
-                     <h3 class="panel-title noselect">ESEA</h3>
+             <div id="esea" class="tab-pane">
+             <br>
+             <div class="flex-container">
+                 <div class="panel panel-default" style="width:250px;">
+                     <div class="panel-heading pushup">
+                         <h3 class="panel-title noselect">ESEA</h3>
+                     </div>
+                     <div class="panel-body pushup">
+                       Wins: <span class="noselect" id="eseaWins">0</span><br>
+                       Draws: <span class="noselect" id="eseaDraws">0</span><br>
+                       Losses: <span class="noselect" id="eseaLosses">0</span><br>
+                       Games Played: <span class="noselect" id="eseaTotalGames">0</span><br>
+                     </div>
                  </div>
-                 <div class="panel-body pushup">
-                   Wins: <span class="noselect" id="eseaWins">0</span><br>
-                   Draws: <span class="noselect" id="eseaDraws">0</span><br>
-                   Losses: <span class="noselect" id="eseaLosses">0</span><br>
-                   Games Played: <span class="noselect" id="eseaTotalGames">0</span><br>
+                 <div class="panel panel-default" style="width:250px;">
+                     <div class="panel-heading pushup">
+                         <h3 class="panel-title noselect">Play ESEA</h3>
+                     </div>
+                     <div class="panel-body pushup">
+                         <a class="btn" onclick="playEsea()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play ESEA</a>
+                     </div>
                  </div>
-             </div>
-             <div class="panel panel-default" style="width:250px;">
-                 <div class="panel-heading pushup">
-                     <h3 class="panel-title noselect">Play ESEA</h3>
+                 <div class="panel panel-default" style="width:250px;">
+                     <div class="panel-heading pushup">
+                         <h3 class="panel-title noselect">ESEA Rank</h3>
+                     </div>
+                     <div class="panel-body pushup">
+                        Elo: <span class="noselect" id="eseaPoints">0</span><br>
+                        Rank: <span class="noselect" id="eseaRank">D-</span><br>
+                     </div>
                  </div>
-                 <div class="panel-body pushup">
-                     <a class="btn" onclick="playEsea()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play ESEA</a>
-                 </div>
-             </div>
-             <div class="panel panel-default" style="width:250px;">
-                 <div class="panel-heading pushup">
-                     <h3 class="panel-title noselect">ESEA Rank</h3>
-                 </div>
-                 <div class="panel-body pushup">
-                    Elo: <span class="noselect" id="eseaPoints">0</span><br>
-                    Rank: <span class="noselect" id="eseaRank">D-</span><br>
-                 </div>
-             </div>
-           </div>
-        </div>
+               </div>
+            </div>
 
-        <div id="cevo" class="tab-pane">
+            <div id="cevo" class="tab-pane">
+            <br>
+            <div class="flex-container">
+                <div class="panel panel-default" style="width:250px;">
+                    <div class="panel-heading pushup">
+                        <h3 class="panel-title noselect">CEVO Scrim</h3>
+                    </div>
+                    <div class="panel-body pushup">
+                      Wins: <span class="noselect" id="cevoWins">0</span><br>
+                      Draws: <span class="noselect" id="cevoDraws">0</span><br>
+                      Losses: <span class="noselect" id="cevoLosses">0</span><br>
+                      Games Played: <span class="noselect" id="cevoTotalGames">0</span><br>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width:250px;">
+                    <div class="panel-heading pushup">
+                        <h3 class="panel-title noselect">Play Scrim</h3>
+                    </div>
+                    <div class="panel-body pushup">
+                        <a class="btn" onclick="playCevo()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play Scrim</a>
+                    </div>
+                </div>
+              </div>
+          </div>
+
+        <div id="tournament" class="tab-pane">
         <br>
         <div class="flex-container">
             <div class="panel panel-default" style="width:250px;">
                 <div class="panel-heading pushup">
-                    <h3 class="panel-title noselect">CEVO Scrim</h3>
+                    <h3 class="panel-title noselect">Tournament</h3>
                 </div>
                 <div class="panel-body pushup">
-                  Wins: <span class="noselect" id="cevoWins">0</span><br>
-                  Draws: <span class="noselect" id="cevoDraws">0</span><br>
-                  Losses: <span class="noselect" id="cevoLosses">0</span><br>
-                  Games Played: <span class="noselect" id="cevoTotalGames">0</span><br>
+                    Attended Minors: <span id="attendedMinors">0</span><br>
+                    Attended Majors: <span id="attendedMajors">0</span>
                 </div>
             </div>
-            <div class="panel panel-default" style="width:250px;">
+            <div class="panel panel-default">
                 <div class="panel-heading pushup">
-                    <h3 class="panel-title noselect">Play Scrim</h3>
+                    <h3 class="panel-title noselect">Play Minor Qualifier</h3>
                 </div>
                 <div class="panel-body pushup">
-                    <a class="btn" onclick="playCevo()" data-toggle="tooltip" title="Dont click the button when it's not ready!">Play Scim</a>
+                <strong>Requirments: </strong><br>
+                - Matchmaking rank: The Global Elite <br>
+                - FaceIt rank: Master <br>
+                - ESEA rank: Rank S <br>
+                <a class="btn" onclick="attendMinor()">Attend Minor Qualifier</a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading pushup">
+                    <h3 class="panel-title noselect">Minor Prizepool</h3>
+                </div>
+                <div class="panel-body pushup">
+                    <strong>1st Place: </strong>€80,000<br>
+                    <strong>2nd Place: </strong>€40,000<br>
+                    <strong>3rd/4rd Place: </strong>€15,000<br>
+                    <strong>5th to 8th Place: </strong>€5,000<br>
+                    <strong>9th to 16th Place: </strong>€3,750<br>
                 </div>
             </div>
           </div>
-      </div>
-  </div>
-
-
-          <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Change Role</h4>
-                </div>
-                <div class="modal-body">
-                  <p>Select a role from: IGL, Awper, Support, Entry Fragger or Lurker</p>
-                    <form name="selectRole" onsubmit="return validateForm()" method="post">
-                        Role: <input type="text" name="role" value=""> <input class="btn" type="submit" value="Submit">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+          <div class="flex-container">
+              <div class="panel panel-default">
+                  <div class="panel-heading pushup">
+                      <h3 class="panel-title noselect">Minor Qualification</h3>
+                  </div>
+                  <div class="panel-body pushup">
+                      Round <span id="currentMinorQualifierRound">0</span> out of <span id="minorQualifierRound">0</span><br>
+                      <strong>Score:</strong><br>
+                      <strong>You </strong><span id="yourMQRounds">0</span> - <span id="enemyMQRounds">0</span><strong> Opponent</strong><br>
+                      <a class="btn" onclick="playMinor()">Play Qualification Match</a>
+                  </div>
               </div>
-
-            </div>
           </div>
-
-       <div class="flex-container-save">
-       <a class="btn" onclick="load()">Load</a>
-       <a class="btn" onclick="save()">Save</a>
-       <a class="btn" onclick="deleteSave()">Delete Save</a>
-       <a class="btn" data-toggle="modal" data-target="#myModal">Open Modal</a>
-        </div>
+       </div>
+    <div class="flex-container-save">
+        <a class="btn" onclick="save()">Save</a>
+        <a class="btn" onclick="load()">Load</a>
+        <a class="btn" onclick="deleteSave()">Delete Save</a>
+    </div>
+    </div>
 
         <script src="js/core.js"></script>
         <script src="lib/jquery/js/jquery.min.js"></script>

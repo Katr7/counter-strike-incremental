@@ -431,6 +431,15 @@ function winLose(){
     }
 };
 
+function attendMinor(){
+    if(p.rank === "The Global Elite" && p.faceItRank === "Master" && p.eseaRank === "S"){
+
+    }
+    else{
+        alert("You haven't met the requirments for the Minor Qualifier.");
+    }
+}
+
 function save(){
     window.localStorage['Player'] = JSON.stringify(Player);
     window.s = JSON.parse(window.localStorage['Player']);
