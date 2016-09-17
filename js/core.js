@@ -29,6 +29,7 @@ function playerSave(){
     this.winLose = 0;
     this.inGameName = "null";
     this.hasName = false;
+    this.acceptedMinor = false;
 }
 
 var Player = new playerSave();
@@ -433,11 +434,35 @@ function winLose(){
 
 function attendMinor(){
     if(p.rank === "The Global Elite" && p.faceItRank === "Master" && p.eseaRank === "S"){
-
+        alert("You have been accepted to the Minor Qualifier");
+        p.acceptedMinor = true;
     }
     else{
         alert("You haven't met the requirments for the Minor Qualifier.");
     }
+}
+
+function playMinor(){
+    var yourScore = getRandomInt(1, 20);
+    var enemyScore = getRandomInt(1, 20);
+    if(yourScore >= enemyScore){
+        p.minorScore++;
+        updateHTML("yourMQRounds", p.minorScore);
+    }
+    else{
+        p.enemyMinorScore++;
+        updateHTML("enemyMQRounds", p.enemyMQRounds);
+    }
+}
+
+function testMinor(){
+    if(p.minorScore === 16){
+        alert("You won the match!")
+    }
+    else if(p.minorScore === 15 && p.enemyMinorScore === 15){
+        alert("The match ended in a draw!")
+    }
+    else if
 }
 
 function save(){
@@ -447,6 +472,7 @@ function save(){
 
 function load(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.acceptedMinor = s.acceptedMinor;
     p.eseaRank = s.eseaRank;
     p.eseaPoints = s.eseaPoints;
     p.faceItPoints = s.faceItPoints;
@@ -507,6 +533,7 @@ function load(){
 
 window.onload = function(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.acceptedMinor = s.acceptedMinor;
     p.eseaRank = s.eseaRank;
     p.eseaPoints = s.eseaPoints;
     p.faceItPoints = s.faceItPoints;
@@ -567,6 +594,7 @@ window.onload = function(){
 
 function deleteSave(){
     window.s = JSON.parse(window.localStorage['Player']);
+    p.acceptedMinor = false;
     p.eseaRank = "D-"
     p.eseaPoints = 0;
     p.hasName = false;
@@ -599,6 +627,7 @@ function deleteSave(){
     p.eseaTotalGames = 0;
     s.eseaRank = p.eseaRank;
     s.eseaPoints = p.eseaPoints;
+    s.acceptedMinor = p.acceptedMinor;
     s.money = p.money;
     s.faceItPoints = p.faceItPoints;
     s.faceItRank = p.faceItRank;
